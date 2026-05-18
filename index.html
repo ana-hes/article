@@ -7,20 +7,19 @@
     <title>birthday</title>
   </head>
   <body>
-    <div id="app"></div>
-    <h1 class="text-4xl font-extrabold text-blue-600 underline">
-  Moje Urodziny
-</h1>
+    <h1 class="text-2xl font-bold">
+      Urodziny
+    </h1>
     <form id="birthdayForm">
       <label for="birthday">Twoje urodziny: </label><br>
       <input type="date" id="birthday" name="birthday" required><br>
-      <button type="submit">To moje urodziny</button>
+      <button type="submit" class="bg-blue-300 p-4">To moje urodziny</button>
     </form>
-    <dialog id="resultDialog" class="">
-      <button id="closeDialog" class="">
+    <dialog id="resultDialog" class="bg-gray-200">
+      <button id="closeDialog">
         &times;
       </button>
-      <div id="dialogContent" class=""></div>
+      <div id="dialogContent" class="text-red-600"></div>
     </dialog>
     <script type="module" src="/src/main.js"></script>
   </body>
