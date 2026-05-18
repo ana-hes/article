@@ -16,11 +16,18 @@ birthdayForm.addEventListener('submit', (e) => {
     let today = dayjs().startOf('day');
     let birthDate = dayjs(birthday.value).startOf('day');
     let daysPassed = today.diff(birthDate, 'day');
-    dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
-    resultDialog.showModal();
+    let nextBirthday = birthDate.year(today.year());
+    if(nextBirthday.isBefore(today)){
+      nextBirthday = nextBirthday.add(1, 'year');
+    }
     if (today.date() === birthDate.date() && today.month() === birthDate.month()){
       alert("Wszystkiego najlepszego!")
+      dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
+    }else{
+      let weeksToBD = nextBirthday.diff(today, "week");
+      dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni, do następnych zostało ${weeksToBD} tygodni`;
     }
+    resultDialog.showModal();
     closeDialogBtn.addEventListener('click', () => {
     resultDialog.close();
     });
