@@ -29,7 +29,7 @@ birthdayForm.addEventListener('submit', (e) => {
         dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
         alert("Masz urodziny w tym tygodniu!")
       }else{
-        dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni, do następnych zostało ${weeksToBD} tygodni`;
+        dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni, ${weeksToBD} tygodni do następnych urodzin`;
       }
     }
     resultDialog.showModal();
