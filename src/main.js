@@ -3,6 +3,25 @@ import javascriptLogo from './assets/javascript.svg'
 import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
+import dayjs from 'dayjs';
+
+const birthdayForm = document.getElementById('birthdayForm');
+const birthday = document.getElementById('birthday');
+
+birthdayForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let today = dayjs().startOf('day');
+    let daysPassed = today.diff(birthDate, 'day');
+    dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
+    resultDialog.showModal();
+    if (today.date() === birthDate.date() && today.month() === birthDate.month()){
+      alert("Wszystkiego najlepszego!")
+    }
+    closeDialogBtn.addEventListener('click', () => {
+    resultDialog.close();
+    });
+})
+
 
 document.querySelector('#app').innerHTML = `
 <section id="center">
