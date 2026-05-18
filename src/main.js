@@ -14,8 +14,8 @@ const closeDialogBtn = document.getElementById('closeDialog');
 birthdayForm.addEventListener('submit', (e) => {
     e.preventDefault();
     let today = dayjs().startOf('day');
-    let daysPassed = today.diff(birthday, 'day');
-    const birthDate = dayjs(birthday.value).startOf('day');
+    let birthDate = dayjs(birthday.value).startOf('day');
+    let daysPassed = today.diff(birthDate, 'day');
     dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
     resultDialog.showModal();
     if (today.date() === birthDate.date() && today.month() === birthDate.month()){
