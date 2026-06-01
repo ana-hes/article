@@ -7,7 +7,7 @@
     <title>article</title>
   </head>
   <body>
-    <select id="sortSelect" class="border rounded p-2 mb-6">
+    <select id="sortSelect" class="max-w-3xl mx-auto mt-10 bg-white rounded-xl shadow p-6">
     <option value="created_at.asc">Po dacie rosnąco</option>
     <option value="created_at.desc">Po dacie malejąco</option>
     <option value="title.asc">Po nazwie alfabetycznie</option>
@@ -21,6 +21,7 @@
         <input id="title" type="text" placeholder="Tytuł" class="w-full border rounded p-2">
         <input id="subtitle" type="text" placeholder="Podtytuł" class="w-full border rounded p-2">
         <input id="author" type="text" placeholder="Autor" class="w-full border rounded p-2">
+        <input id="created_at" type="datetime-local" class="w-full border rounded p-2">
         <textarea id="content" placeholder="Treść" rows="5" class="w-full border rounded p-2"></textarea>
         <button type="submit" class="bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600">
             Dodaj artykuł

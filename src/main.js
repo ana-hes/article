@@ -44,7 +44,7 @@ const renderArticles = (articles) => {
 
 const submit = document.getElementById('submit')
 
-const createNewArticle = async (title, subtitle, author, content) => {
+const createNewArticle = async (title, subtitle, author, content, created_at) => {
     try {
         const response = await fetch('https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/article', {
             method: 'POST',
@@ -52,7 +52,7 @@ const createNewArticle = async (title, subtitle, author, content) => {
                 apikey: API_KEY,
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ title, subtitle, author, content }),
+            body: JSON.stringify({title, subtitle, author, content, created_at}),
         });
         if (response.status !== 201) {
             throw new Error(`Status: ${response.status}`);
@@ -68,6 +68,7 @@ document.getElementById('articleForm').addEventListener('submit', async (e) => {
     const subtitle = document.getElementById('subtitle').value;
     const author = document.getElementById('author').value;
     const content = document.getElementById('content').value;
+    const created_at = document.getElementById('created_at').value;
     await createNewArticle(title, subtitle, author, content);
     document.getElementById('articleForm').reset();
     fetchArticles();
