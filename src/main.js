@@ -5,7 +5,7 @@ import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 
 const API_URL = 'https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/';
-const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdWVxaXVja2ZsZHh5anJxemFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDQxMzksImV4cCI6MjA5NTg4MDEzOX0.d1jpePAiyZ0aCII95eg88C3ORjI0IQYqacf4YSrb9r8';
+const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdWVxaXVja2ZsZHh5anJxemFxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDMwNDEzOSwiZXhwIjoyMDk1ODgwMTM5fQ.oDpPcftMS19aLBMaJN6mMV57EVUKurDG8pbWart5ZLw';
 
 const fetchArticles = async () => {
     try {
