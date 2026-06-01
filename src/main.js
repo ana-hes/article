@@ -4,6 +4,42 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 
+const API_URL = 'https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/';
+const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdWVxaXVja2ZsZHh5anJxemFxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAzMDQxMzksImV4cCI6MjA5NTg4MDEzOX0.d1jpePAiyZ0aCII95eg88C3ORjI0IQYqacf4YSrb9r8';
+
+const fetchArticles = async () => {
+    try {
+        const response = await fetch(API_URL, {
+            headers: {
+                apikey: API_KEY,
+            }
+        });
+        const data = await response.json();
+        renderArticles(data);
+    } catch (error) {
+        console.error('Błąd:', error);
+    }
+};
+
+const renderArticles = (articles) => {
+    const container = document.getElementById('articles');
+    container.innerHTML = '';
+
+    articles.forEach(article => {
+        container.innerHTML += `
+            <div class="bg-white rounded-xl shadow p-6">
+                <h2 class="text-xl font-bold">${article.title}</h2>
+                <h3 class="text-gray-500 mb-2">${article.subtitle}</h3>
+                <p class="text-sm text-gray-400 mb-4">
+                    Autor: ${article.author} | Data: ${article.created_at}
+                </p>
+                <p class="text-gray-700">${article.content}</p>
+            </div>
+        `;
+    });
+};
+
+fetchArticles();
 
 
 
