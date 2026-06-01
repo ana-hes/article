@@ -40,23 +40,37 @@ const renderArticles = (articles) => {
         `;
     });
 };
-// const createNewArticle = async (title) => {
-//     try {
-//         const response = await fetch(API_URL , {
-//             method: 'POST',
-//             headers: {
-//                 apiKey: API_KEY ,
-//                 'Content-Type' : 'application/json' ,
-//             },
-//             body: JSON.stringify ({ title }),
-//         });
-//         if (response.status !== 201) {
-//             throw new Error(`Status: ${response.status}`);
-//         }
-//     } catch (error) {
-//         console.error('Fetch error:' , error);
-//     }
-// };
+
+const submit = document.getElementById('submit')
+
+const createNewArticle = async (title, subtitle, author, content) => {
+    try {
+        const response = await fetch('https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/article', {
+            method: 'POST',
+            headers: {
+                apikey: API_KEY,
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ title, subtitle, author, content }),
+        });
+        if (response.status !== 201) {
+            throw new Error(`Status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Fetch error:', error);
+    }
+};
+
+document.getElementById('articleForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const title = document.getElementById('title').value;
+    const subtitle = document.getElementById('subtitle').value;
+    const author = document.getElementById('author').value;
+    const content = document.getElementById('content').value;
+    await createNewArticle(title, subtitle, author, content);
+    document.getElementById('articleForm').reset();
+    fetchArticles();
+});
 
 
 fetchArticles();
