@@ -15,29 +15,45 @@ const fetchArticles = async () => {
             }
         });
         const data = await response.json();
-        renderArticles(data);
+        return data;
     } catch (error) {
-        console.error('Błąd:', error);
+        console.error('Fetch error:', error);
     }
 };
-
-const renderArticles = (articles) => {
-    const container = document.getElementById('articles');
-    container.innerHTML = '';
-
-    articles.forEach(article => {
-        container.innerHTML += `
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold">${article.title}</h2>
-                <h3 class="text-gray-500 mb-2">${article.subtitle}</h3>
-                <p class="text-sm text-gray-400 mb-4">
-                    Autor: ${article.author} | Data: ${article.created_at}
-                </p>
-                <p class="text-gray-700">${article.content}</p>
-            </div>
-        `;
-    });
+const createNewArticle = async (title) => {
+    try {
+        const response = await fetch(API_URL , {
+            method: 'POST',
+            headers: {
+                apiKey: API_KEY ,
+                'Content-Type' : 'application/json' ,
+            },
+            body: JSON.stringify ({ title }),
+        });
+        if (response.status !== 201) {
+            throw new Error(`Status: ${response.status}`);
+        }
+    } catch (error) {
+        console.error('Fetch error:' , error);
+    }
 };
+// const renderArticles = (articles) => {
+//     const container = document.getElementById('articles');
+//     container.innerHTML = '';
+
+//     articles.forEach(article => {
+//         container.innerHTML += `
+//             <div class="bg-white rounded-xl shadow p-6">
+//                 <h2 class="text-xl font-bold">${article.title}</h2>
+//                 <h3 class="text-gray-500 mb-2">${article.subtitle}</h3>
+//                 <p class="text-sm text-gray-400 mb-4">
+//                     Autor: ${article.author} | Data: ${article.created_at}
+//                 </p>
+//                 <p class="text-gray-700">${article.content}</p>
+//             </div>
+//         `;
+//     });
+// };
 
 fetchArticles();
 
