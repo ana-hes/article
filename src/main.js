@@ -16,6 +16,7 @@ const fetchArticles = async () => {
         });
         const data = await response.json();
         console.log(data)
+        renderArticles(data)
         return data;
     } catch (error) {
         console.error('Fetch error:', error);
