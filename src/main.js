@@ -4,7 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 
-const API_URL = 'https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/';
+const API_URL = 'https://hiueqiuckfldxyjrqzaq.supabase.co/rest/v1/article?select=*';
 const API_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhpdWVxaXVja2ZsZHh5anJxemFxIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc4MDMwNDEzOSwiZXhwIjoyMDk1ODgwMTM5fQ.oDpPcftMS19aLBMaJN6mMV57EVUKurDG8pbWart5ZLw';
 
 const fetchArticles = async () => {
