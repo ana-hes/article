@@ -5,38 +5,6 @@ import heroImg from './assets/hero.png'
 import { setupCounter } from './counter.js'
 import dayjs from 'dayjs';
 
-const birthdayForm = document.getElementById('birthdayForm');
-const birthday = document.getElementById('birthday');
-const resultDialog = document.getElementById('resultDialog');
-const dialogContent = document.getElementById('dialogContent');
-const closeDialogBtn = document.getElementById('closeDialog');
-
-birthdayForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    let today = dayjs().startOf('day');
-    let birthDate = dayjs(birthday.value).startOf('day');
-    let daysPassed = today.diff(birthDate, 'day');
-    let nextBirthday = birthDate.year(today.year());
-    if(nextBirthday.isBefore(today)){
-      nextBirthday = nextBirthday.add(1, 'year');
-    }
-    if (today.date() === birthDate.date() && today.month() === birthDate.month()){
-      alert("Wszystkiego najlepszego!")
-      dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
-    }else{
-      let weeksToBD = nextBirthday.diff(today, "week");
-      if(weeksToBD == 0){
-        dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni`;
-        alert("Masz urodziny w tym tygodniu!")
-      }else{
-        dialogContent.innerText = `Od Twoich narodzin minęło ${daysPassed} dni, ${weeksToBD} tygodni do następnych urodzin`;
-      }
-    }
-    resultDialog.showModal();
-    closeDialogBtn.addEventListener('click', () => {
-    resultDialog.close();
-    });
-})
 
 
 // document.querySelector('#app').innerHTML = `
