@@ -15,28 +15,29 @@ const fetchArticles = async () => {
             }
         });
         const data = await response.json();
+        console.log(data)
         return data;
     } catch (error) {
         console.error('Fetch error:', error);
     }
 };
-const createNewArticle = async (title) => {
-    try {
-        const response = await fetch(API_URL , {
-            method: 'POST',
-            headers: {
-                apiKey: API_KEY ,
-                'Content-Type' : 'application/json' ,
-            },
-            body: JSON.stringify ({ title }),
-        });
-        if (response.status !== 201) {
-            throw new Error(`Status: ${response.status}`);
-        }
-    } catch (error) {
-        console.error('Fetch error:' , error);
-    }
-};
+// const createNewArticle = async (title) => {
+//     try {
+//         const response = await fetch(API_URL , {
+//             method: 'POST',
+//             headers: {
+//                 apiKey: API_KEY ,
+//                 'Content-Type' : 'application/json' ,
+//             },
+//             body: JSON.stringify ({ title }),
+//         });
+//         if (response.status !== 201) {
+//             throw new Error(`Status: ${response.status}`);
+//         }
+//     } catch (error) {
+//         console.error('Fetch error:' , error);
+//     }
+// };
 // const renderArticles = (articles) => {
 //     const container = document.getElementById('articles');
 //     container.innerHTML = '';
